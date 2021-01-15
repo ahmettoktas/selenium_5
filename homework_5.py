@@ -1,39 +1,35 @@
+from homework5.locators import parameters
+from homework5.login import LoginFunctions
+from homework5.search import SearchFunctions
+from homework5.product import ProductFunctions
+from homework5.base import BaseFunctions
 from selenium import webdriver
-from pomTests.homework5.locators import Locators
-from pomTests.homework5.loginPage import LoginPage
-from pomTests.homework5.searchPage import SearchPage
-from pomTests.homework5.productPage import ProductPage
+import unittest
 import time
 
-driver_path = Locators.driver_path
-driver = webdriver.Chrome(driver_path)
-driver.maximize_window()
-driver.get("https://www.amazon.com")
 
-#login page
-login = LoginPage(driver)
-login.assertPage()
-login.open_LoginPage()
-login.enter_email("ahmettoktasdot@gmail.com")
-login.click_email_login()
-login.enter_password("159753")
-login.click_password_login()
+class TestRun(unittest.TestCase, BaseFunctions):
 
-#search page
-search = SearchPage(driver)
-driver.implicitly_wait(1000)
-search.enter_search_text("samsung")
-driver.implicitly_wait(1000)
-search.click_search_button()
-search.click_second_page()
-driver.implicitly_wait(1000)
-search.click_product()
+    def setUp(self):
+        self.driver = webdriver.Chrome(parameters.driver_path)
+        self.driver.maximize_window()
+        self.driver.get(parameters.website_link)
+        self.login_functions = LoginFunctions(driver=self.driver)
+        self.product_functions = ProductFunctions(driver=self.driver)
+        self.search_functions = SearchFunctions(driver=self.driver)
 
-#product page
-wishlist = ProductPage(driver)
-wishlist.addToWishlist()
-wishlist.goToDeletePage()
-driver.implicitly_wait(2000)
-wishlist.DeleteProduct()
-time.sleep(3)
-driver.quit()
+    def test(self):
+        self.login_functions.navigate_to_login()
+        self.login_functions.login()
+        self.search_functions.search()
+        self.search_functions.click_product()
+        self.product_functions.add_to_wishlist()
+        self.product_functions.navigate_to_wishlist_page()
+        self.product_functions.delete_product()
+
+    def TearDown(self):
+        self.driver.quit()
+
+
+if __name__ == "__main__":
+    unittest.main()
