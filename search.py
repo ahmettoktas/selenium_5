@@ -1,5 +1,5 @@
-from homework5.locators import search_page_locators, parameters
-from homework5.base import BaseFunctions
+from locators import search_page_locators, parameters
+from base import BaseFunctions
 import unittest
 
 
