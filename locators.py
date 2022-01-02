@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 
 class parameters:
-    driver_path = "C:/Users/User/Desktop/chromedriver.exe"
+    driver_path = "chromedriver.exe"
     website_link = "https://www.amazon.com"
     email = "ahmettoktasdot@gmail.com"
     password = "159753"
