@@ -1,8 +1,8 @@
-from homework5.locators import parameters
-from homework5.login import LoginFunctions
-from homework5.search import SearchFunctions
-from homework5.product import ProductFunctions
-from homework5.base import BaseFunctions
+from locators import parameters
+from login import LoginFunctions
+from search import SearchFunctions
+from product import ProductFunctions
+from base import BaseFunctions
 from selenium import webdriver
 import unittest
 
