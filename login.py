@@ -1,6 +1,6 @@
-from homework5.locators import login_page_locators
-from homework5.locators import parameters
-from homework5.base import BaseFunctions
+from locators import login_page_locators
+from locators import parameters
+from base import BaseFunctions
 
 
 class LoginFunctions(BaseFunctions):
