@@ -12,7 +12,7 @@ class TestRun(unittest.TestCase, BaseFunctions):
     def setUp(self):
         self.chrome_options = webdriver.ChromeOptions()
         self.chrome_options.add_argument('--disable-notifications')
-        self.driver = webdriver.Chrome(executable_path="home/chromedriver")
+        self.driver = webdriver.Chrome(executable_path="/home/chromedriver")
         self.driver.maximize_window()
         self.driver.get(parameters.website_link)
         self.login_functions = LoginFunctions(driver=self.driver)
